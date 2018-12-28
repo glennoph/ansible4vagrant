@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: install ntp
+    yum:
+      name: ntp
+      state: present
+
+  - name: start ntpd
+    service:
+      name: ntpd
+      state: started
+      enabled: yes
