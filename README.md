@@ -22,6 +22,18 @@ ansible for vagrant
 
 ## Configure for Ansible Provision
 
-* 
+* Update Vagrantfile adding: 
+
+```
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provisioning/playbook.yml"
+  end
+```
+
+* Add playbook to provisioning/playbook.yml
+
+* Add ansible.cfg with ansible configuration items
+
+
 
 
