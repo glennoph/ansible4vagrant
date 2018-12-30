@@ -3,6 +3,8 @@
   become: yes
 
   tasks:
+  - debug: msg="ansible time micro {{ ansible_date_time.iso8601_micro }}"
+
   - name: install ntp
     yum:
       name: ntp
@@ -13,3 +15,6 @@
       name: ntpd
       state: started
       enabled: yes
+
+  - name: date millis
+    command: date +%s%3N
