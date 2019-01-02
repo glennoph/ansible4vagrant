@@ -1,0 +1,9 @@
+# token dictionary
+
+tokens_to_replace:
+  - { regexp: '@token1@', replace: 'aaaa' }
+  - { regexp: '@token2@', replace: 'bbbb' }
+  - { regexp: '@token3@', replace: 'cccc' }
+  - { regexp: '@token4@', replace: 'dddd' }
+  - { regexp: '@token5@', replace: 'eeee' }
+  - { regexp: '@token6@', replace: 'ffff' }

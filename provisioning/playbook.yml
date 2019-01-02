@@ -1,20 +1,24 @@
 ---
 - hosts: all
-  become: yes
 
   tasks:
-  - debug: msg="ansible time micro {{ ansible_date_time.iso8601_micro }}"
+  - name: include token dict
+    include_vars:
+      file: "{{ playbook_dir }}/token-dict.yml"
+ 
+  - name: find files for replace
+    find:
+      paths: /data
+      patterns: "*.properties"
+      recurse: yes
+    register: find_properties
 
-  - name: install ntp
-    yum:
-      name: ntp
-      state: present
-
-  - name: start ntpd
-    service:
-      name: ntpd
-      state: started
-      enabled: yes
-
-  - name: date millis
-    command: date +%s%3N
+  - name: replace tokens
+    replace:
+      path:    "{{ item.0.path }}"
+      regexp:  "{{ item.1.regexp }}"
+      replace: "{{ item.1.replace }}"
+      backup: yes
+    with_nested:
+      - "{{ find_properties.files }}"
+      - "{{ tokens_to_replace }}"

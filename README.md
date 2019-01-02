@@ -25,9 +25,12 @@ ansible for vagrant
   - `vagrant box list`
 * Add Vagrant box for centos/7 - downloads vm image
   - `vagrant box add centos/7`
+* Add VirtualBox Guest Additions (needed for shared folder)
+  - `vagrant plugin install vagrant-vbguest`
 * Init Vagrantfile for Centos v7 box for vagrant with command: 
   - `vagrant init centos/7`
-* Start/add/boot Centos vm : `vagrant up`
+* Start/add/boot Centos vm 
+  - `vagrant up`
 * Check status of vm : `vagrant status`
 * SSH to vm: `vagrant ssh`
 * Shutdown vm: `vagrant halt`
