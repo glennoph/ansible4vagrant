@@ -36,9 +36,9 @@
     command:
       cat /data/file1.properties
 
-  - name: grep for tokens expecting none after replace
-    shell:
-      grep token "/data/file1.properties"
+  - name: grep file1 for tokens, expecting none after replace
+    command:
+      grep token /data/file1.properties
     ignore_errors: True
 
 
