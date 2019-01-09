@@ -22,3 +22,24 @@
     with_nested:
       - "{{ find_properties.files }}"
       - "{{ tokens_to_replace }}"
+
+  - name: check data dir exists
+    file:
+      dest: "/data"
+      state: directory
+
+  - name: list data dir
+    command:
+      ls /data/
+      
+  - name: cat file1
+    command:
+      cat /data/file1.properties
+
+  - name: grep for tokens expecting none after replace
+    shell:
+      grep token "/data/file1.properties"
+    ignore_errors: True
+
+
+      
