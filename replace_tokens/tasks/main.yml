@@ -1,0 +1,47 @@
+---
+- name: include token dict
+  include_vars:
+    file: "{{ playbook_dir }}/token-dict.yml"
+
+
+- name: grep file1 for tokens before replace
+  command:
+    grep token /data/file1.properties
+    
+- name: find files for replace
+  find:
+    paths: /data
+    patterns: "*.properties"
+    recurse: yes
+  register: find_properties
+
+- name: replace tokens
+  replace:
+    path:    "{{ item.0.path }}"
+    regexp:  "{{ item.1.regexp }}"
+    replace: "{{ item.1.replace }}"
+    backup: yes
+  with_nested:
+    - "{{ find_properties.files }}"
+    - "{{ tokens_to_replace }}"
+
+- name: check data dir exists
+  file:
+    dest: "/data"
+    state: directory
+
+- name: list data dir
+  command:
+    ls /data/
+    
+- name: cat file1
+  command:
+    cat /data/file1.properties
+
+- name: grep file1 for tokens, expecting none after replace
+  command:
+    grep token /data/file1.properties
+  ignore_errors: True
+
+
+    

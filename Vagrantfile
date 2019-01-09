@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
   
   # Enable provisioning with an Ansible script
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/playbook.yml"
+    ansible.playbook = "playbook.yml"
     ansible.verbose = true
     ansible.version = "latest"
   end
