@@ -5,7 +5,12 @@
   - name: include token dict
     include_vars:
       file: "{{ playbook_dir }}/token-dict.yml"
- 
+
+
+  - name: grep file1 for tokens before replace
+    command:
+      grep token /data/file1.properties
+      
   - name: find files for replace
     find:
       paths: /data
