@@ -7,6 +7,7 @@ ansible for vagrant
 * Install Ansible from https://ansible.com    (require 'yaml-mode)
    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
   - current version 2.7
+  - tested vesion 2.6.4
   - installed from ansible.com
   - check version : `ansible --version`
 * Install Vagrant from https://www.vagrantup.com/ or from repo 
@@ -16,6 +17,7 @@ ansible for vagrant
 * Install Virtualbox from https://www.virtualbox.org/wiki/Downloads 
   - current version 6.0
   - repo version 5.2 (ubuntu)
+  - tested version 5.2.22 (macos)
   - Check version with `virtualbox --version` | help | about
 
 ## Setup
@@ -43,7 +45,7 @@ ansible for vagrant
 
 ```
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/playbook.yml"
+    ansible.playbook = "playbook.yml"
 	ansible.verbose = true
   end
 ```
@@ -57,5 +59,25 @@ ansible for vagrant
 callback_whitelist = timer, profile_tasks
 ```
 
+## Add Ansible Role 
+* playbook.yml moved from provisioning dir to root
+* playbook.yml roles: replace_tokens specify the role to run
 
+```
+---
+- hosts: all
+  roles:
+    - replace_tokens
+```
 
+* the tasks for replace_tokens is in replace_tokens/main.yml
+
+## Vagrant/Virtualbox messsage
+The following message appeared during vagrant provision.
+It does not appear to be serious.
+
+```
+==> default: Vagrant has detected a configuration issue which exposes a
+==> default: vulnerability with the installed version of VirtualBox. The
+...
+```
