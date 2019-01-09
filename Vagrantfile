@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
 
   # Shared data files
-  config.vm.synced_folder "data/", "/data"
+  config.vm.synced_folder "data/", "/data", type: 'rsync'
   
   # Enable provisioning with an Ansible script
   config.vm.provision "ansible" do |ansible|
