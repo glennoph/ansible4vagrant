@@ -6,8 +6,9 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
-    image: centos:7
+  - name: centos7
+    image: geerlingguy/docker-centos7-ansible
+    privileged: true
 provisioner:
   name: ansible
   lint:
