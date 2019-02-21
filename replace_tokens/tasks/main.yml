@@ -12,8 +12,9 @@
   include_vars:
     file: "{{ playbook_dir }}/token-expression.yml"
     
-- name: replace tokens via sed inplace substitution
-  shell: sed -i "{{tokens_expression}}" /data/file*.properties
+- name: replace tokens via find xargs sed inplace subst
+  shell: find /data -type f -name 'file*.properties' | xargs sed -i "{{tokens_expression}}"
+  #shell: sed -i "{{tokens_expression}}" /data/file*.properties
     
 ##- name: find files for replace
 ##  find:
@@ -41,11 +42,13 @@
   command:
     ls /data/
     
-- name: cat file*
-  command:
-    cat /data/file*.properties
+- name: cat file1,2,3
+  shell: |
+    cat /data/file1.properties
+    cat /data/file2.properties
+    cat /data/file3.properties
 
-- name: grep file1 for tokens, expecting none after replace
+- Name: grep file1 for tokens, expecting none after replace
   command:
     grep token /data/file1.properties
   ignore_errors: True
