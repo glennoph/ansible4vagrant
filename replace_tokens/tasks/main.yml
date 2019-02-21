@@ -12,8 +12,8 @@
   include_vars:
     file: "{{ playbook_dir }}/token-expression.yml"
     
-- name: replace tokens via find xargs sed inplace subst
-  shell: find /data -type f -name 'file*.properties' | xargs sed -i "{{tokens_expression}}"
+- name: replace tokens via find xargs P0 sed inplace subst
+  shell: find /data -type f -name 'file*.properties' | xargs -P 0 sed -i "{{tokens_expression}}"
   #shell: sed -i "{{tokens_expression}}" /data/file*.properties
     
 ##- name: find files for replace
