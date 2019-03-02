@@ -1,0 +1,19 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: default
+#+REVEAL_THEME: moon
+#+Title: ansible4vagrant
+#+Author: glenn opdycke-hansen
+#+Email: glennoph@gmail.com
+
+* Motivation
+- Ansible use is to deploy an application after a build.
+- The build is executed first which can take 10-20 minutes
+- Changes in the ansible code are slowed due to the build timing.
+- Need a way to quickly run the ansible code in order to test changes.
+* First Option: Run Ansible from Vagrant
+** Installs
+*** Install Ansible
+*** Install Vagrant
+*** Install Virtualbox
+** Use
+* H3
