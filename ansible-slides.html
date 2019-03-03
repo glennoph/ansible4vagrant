@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>ansible4vagrant</title>
+<title>ansible 4 vagrant</title>
 <meta name="author" content="glenn opdycke-hansen"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="file:////home/glenn/slides/reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="file:////opt/reveal.js/css/reveal.css"/>
 
-<link rel="stylesheet" href="file:////home/glenn/slides/reveal.js/css/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="file:////opt/reveal.js/css/theme/sky.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -18,7 +18,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:////home/glenn/slides/reveal.js/css/print/pdf.css';
+        link.href = 'file:////opt/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -27,12 +27,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">ansible4vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-02 Sat 10:43</p>
+<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-03 Sun 09:33</p>
 </section>
 
 <section>
-<section id="slide-org9589ce4">
-<h2 id="org9589ce4">Motivation</h2>
+<section id="slide-org32288ff">
+<h2 id="org32288ff">Motivation</h2>
 <ul>
 <li>Ansible use is to deploy an application after a build.</li>
 <li>The build is executed first which can take 10-20 minutes</li>
@@ -43,38 +43,38 @@
 </section>
 </section>
 <section>
-<section id="slide-orga04e3d1">
-<h2 id="orga04e3d1">First Option: Run Ansible from Vagrant</h2>
-<div class="outline-text-2" id="text-orga04e3d1">
+<section id="slide-org1d5cf91">
+<h2 id="org1d5cf91">First Option: Run Ansible from Vagrant</h2>
+<div class="outline-text-2" id="text-org1d5cf91">
 </div>
 </section>
-<section id="slide-orgcc00af0">
-<h3 id="orgcc00af0">Installs</h3>
-<div class="outline-text-3" id="text-orgcc00af0">
+<section id="slide-org5f32620">
+<h3 id="org5f32620">Installs</h3>
+<div class="outline-text-3" id="text-org5f32620">
 </div>
 </section>
-<section id="slide-org17affb2">
-<h4 id="org17affb2">Install Ansible</h4>
+<section id="slide-orgff701f2">
+<h4 id="orgff701f2">Install Ansible</h4>
 </section>
-<section id="slide-org4a941e5">
-<h4 id="org4a941e5">Install Vagrant</h4>
+<section id="slide-orgf7060a0">
+<h4 id="orgf7060a0">Install Vagrant</h4>
 </section>
-<section id="slide-orge89849f">
-<h4 id="orge89849f">Install Virtualbox</h4>
+<section id="slide-orgb6bfdc5">
+<h4 id="orgb6bfdc5">Install Virtualbox</h4>
 </section>
-<section id="slide-org8db9dbc">
-<h3 id="org8db9dbc">Use</h3>
+<section id="slide-orgdd06852">
+<h3 id="orgdd06852">Use</h3>
 </section>
 </section>
 <section>
-<section id="slide-org2362afc">
-<h2 id="org2362afc">H3</h2>
+<section id="slide-orgf0fcbec">
+<h2 id="orgf0fcbec">H3</h2>
 </section>
 </section>
 </div>
 </div>
-<script src="file:////home/glenn/slides/reveal.js/lib/js/head.min.js"></script>
-<script src="file:////home/glenn/slides/reveal.js/js/reveal.js"></script>
+<script src="file:////opt/reveal.js/lib/js/head.min.js"></script>
+<script src="file:////opt/reveal.js/js/reveal.js"></script>
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
@@ -104,11 +104,11 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'file:////home/glenn/slides/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'file:////home/glenn/slides/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:////home/glenn/slides/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:////home/glenn/slides/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'file:////home/glenn/slides/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: 'file:////opt/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:////opt/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:////opt/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:////opt/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:////opt/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 });
 </script>
 </body>

@@ -1,7 +1,7 @@
 #+OPTIONS: num:nil toc:nil
 #+REVEAL_TRANS: default
-#+REVEAL_THEME: moon
-#+Title: ansible4vagrant
+#+REVEAL_THEME: sky
+#+Title: ansible 4 vagrant
 #+Author: glenn opdycke-hansen
 #+Email: glennoph@gmail.com
 
