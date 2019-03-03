@@ -1,19 +1,86 @@
 #+OPTIONS: num:nil toc:nil
 #+REVEAL_TRANS: default
 #+REVEAL_THEME: sky
+#+REVEAL_PLUGINS: (highlight)
 #+Title: ansible 4 vagrant
 #+Author: glenn opdycke-hansen
 #+Email: glennoph@gmail.com
 
 * Motivation
-- Ansible use is to deploy an application after a build.
-- The build is executed first which can take 10-20 minutes
-- Changes in the ansible code are slowed due to the build timing.
-- Need a way to quickly run the ansible code in order to test changes.
+  - Ansible use case is to deploy an application after a build.
+  - The build is executed first which can take 10-20 minutes
+  - Changes in the ansible code are slowed due to the build timing.
+  - Need a way to quickly run the ansible code in order to test changes.
 * First Option: Run Ansible from Vagrant
 ** Installs
 *** Install Ansible
+  - Ansible Installation Guild contains the instructions to install the control machine
+  - See [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][ansible install guide]]
+  - Check version :: ~ansible --version~
+
+
 *** Install Vagrant
+
+#+BEGIN_QUOTE
+Vagrant is utility for managing the lifecycle of virtual machines
+#+END_QUOTE=
+
+  - To install vagrant, see [[https://www.vagrantup.com/docs/installation/][vagrant installation]]
+  - Vagrant allows you to start virtual machines.
+  - It also can provision the VM with Ansible
+
+#+begin_src python
+config.vm.provision "ansible" do |ansible|
+  ansible.playbook = "playbook.yml"
+end
+#+end_src
+
+  - vagrant version :: ~vagrant --version~
+
 *** Install Virtualbox
-** Use
-* H3
+
+#+BEGIN_QUOTE
+VirtualBox is a virtualizer for x86 hardware
+#+END_QUOTE
+
+- Install package from [[https://www.virtualbox.org/wiki/Downloads][VirtualBox Downloads]]
+** Setup
+- Create directory for the project, eg, **ansible4vagrant**
+- List the vagrant boxes
+#+BEGIN_SRC 
+vagrant box list
+#+END_SRC
+
+- Add Vagrant box for centos/7 - downloads vm image
+#+BEGIN_SRC 
+vagrant box add centos/7
+#+END_SRC
+
+- Init Vagrantfile for Centos v7 box for vagrant with command: 
+#+BEGIN_SRC 
+vagrant init centos/7
+#+END_SRC
+
+** Start/Test/End
+  - Start/add/boot Centos vm  
+#+BEGIN_SRC 
+vagrant up
+#+END_SRC
+  - Check status of vm 
+#+BEGIN_SRC 
+vagrant status
+#+END_SRC
+  - SSH to vm
+#+BEGIN_SRC 
+vagrant ssh
+#+END_SRC
+  - Shutdown vm
+#+BEGIN_SRC 
+vagrant halt
+#+END_SRC
+** Reload/Provision
+#+BEGIN_SRC 
+vagrant reload
+vagrant provision
+#+END_SRC
+

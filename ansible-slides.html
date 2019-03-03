@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="file:////opt/reveal.js/css/theme/sky.css" id="theme"/>
 
-
+<link rel="stylesheet" href="file:////opt/reveal.js/lib/css/zenburn.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -27,14 +27,14 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-03 Sun 09:33</p>
+<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-03 Sun 16:24</p>
 </section>
 
 <section>
-<section id="slide-org32288ff">
-<h2 id="org32288ff">Motivation</h2>
+<section id="slide-org41b4f86">
+<h2 id="org41b4f86">Motivation</h2>
 <ul>
-<li>Ansible use is to deploy an application after a build.</li>
+<li>Ansible use case is to deploy an application after a build.</li>
 <li>The build is executed first which can take 10-20 minutes</li>
 <li>Changes in the ansible code are slowed due to the build timing.</li>
 <li>Need a way to quickly run the ansible code in order to test changes.</li>
@@ -43,32 +43,134 @@
 </section>
 </section>
 <section>
-<section id="slide-org1d5cf91">
-<h2 id="org1d5cf91">First Option: Run Ansible from Vagrant</h2>
-<div class="outline-text-2" id="text-org1d5cf91">
+<section id="slide-orgc0c990f">
+<h2 id="orgc0c990f">First Option: Run Ansible from Vagrant</h2>
+<div class="outline-text-2" id="text-orgc0c990f">
 </div>
 </section>
-<section id="slide-org5f32620">
-<h3 id="org5f32620">Installs</h3>
-<div class="outline-text-3" id="text-org5f32620">
+<section id="slide-orged6e956">
+<h3 id="orged6e956">Installs</h3>
+<div class="outline-text-3" id="text-orged6e956">
 </div>
 </section>
-<section id="slide-orgff701f2">
-<h4 id="orgff701f2">Install Ansible</h4>
+<section id="slide-orgf832094">
+<h4 id="orgf832094">Install Ansible</h4>
+<ul>
+<li>Ansible Installation Guild contains the instructions to install the control machine</li>
+<li>See <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">ansible install guide</a></li>
+<li id="Check version"><code>ansible --version</code></li>
+
+</ul>
+
+
 </section>
-<section id="slide-orgf7060a0">
-<h4 id="orgf7060a0">Install Vagrant</h4>
+<section id="slide-orgc8f5caf">
+<h4 id="orgc8f5caf">Install Vagrant</h4>
+<p>
+#+BEGIN<sub>QUOTE</sub>
+Vagrant is utility for managing the lifecycle of virtual machines
+#+END<sub>QUOTE</sub>=
+</p>
+
+<ul>
+<li>To install vagrant, see <a href="https://www.vagrantup.com/docs/installation/">vagrant installation</a></li>
+<li>Vagrant allows you to start virtual machines.</li>
+<li>It also can provision the VM with Ansible</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre><code class="" python >config.vm.provision "ansible" do |ansible|
+  ansible.playbook = "playbook.yml"
+end
+</code></pre>
+</div>
+
+<dl>
+<dt>vagrant version</dt><dd><code>vagrant --version</code></dd>
+
+</dl>
+
 </section>
-<section id="slide-orgb6bfdc5">
-<h4 id="orgb6bfdc5">Install Virtualbox</h4>
+<section id="slide-org4d38a44">
+<h4 id="org4d38a44">Install Virtualbox</h4>
+<blockquote>
+<p>
+VirtualBox is a virtualizer for x86 hardware
+</p>
+</blockquote>
+
+<ul>
+<li>Install package from <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox Downloads</a></li>
+
+</ul>
 </section>
-<section id="slide-orgdd06852">
-<h3 id="orgdd06852">Use</h3>
+<section id="slide-org3a554b1">
+<h3 id="org3a554b1">Setup</h3>
+<ul>
+<li>Create directory for the project, eg, <b><b>ansible4vagrant</b></b></li>
+<li>List the vagrant boxes</li>
+
+</ul>
+<pre  class="example">
+vagrant box list
+</pre>
+
+<ul>
+<li>Add Vagrant box for centos/7 - downloads vm image</li>
+
+</ul>
+<pre  class="example">
+vagrant box add centos/7
+</pre>
+
+<ul>
+<li>Init Vagrantfile for Centos v7 box for vagrant with command:</li>
+
+</ul>
+<pre  class="example">
+vagrant init centos/7
+</pre>
+
 </section>
+<section id="slide-org8808713">
+<h3 id="org8808713">Start/Test/End</h3>
+<ul>
+<li>Start/add/boot Centos vm</li>
+
+</ul>
+<pre  class="example">
+vagrant up
+</pre>
+<ul>
+<li>Check status of vm</li>
+
+</ul>
+<pre  class="example">
+vagrant status
+</pre>
+<ul>
+<li>SSH to vm</li>
+
+</ul>
+<pre  class="example">
+vagrant ssh
+</pre>
+<ul>
+<li>Shutdown vm</li>
+
+</ul>
+<pre  class="example">
+vagrant halt
+</pre>
 </section>
-<section>
-<section id="slide-orgf0fcbec">
-<h2 id="orgf0fcbec">H3</h2>
+<section id="slide-orgff79b70">
+<h3 id="orgff79b70">Reload/Provision</h3>
+<pre  class="example">
+vagrant reload
+vagrant provision
+</pre>
 </section>
 </section>
 </div>
@@ -104,11 +206,7 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'file:////opt/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'file:////opt/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:////opt/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:////opt/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'file:////opt/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: 'file:////opt/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
 });
 </script>
 </body>
