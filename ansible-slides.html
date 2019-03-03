@@ -27,12 +27,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-03 Sun 16:24</p>
+<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-03 Sun 16:26</p>
 </section>
 
 <section>
-<section id="slide-org41b4f86">
-<h2 id="org41b4f86">Motivation</h2>
+<section id="slide-orgcbb20b5">
+<h2 id="orgcbb20b5">Motivation</h2>
 <ul>
 <li>Ansible use case is to deploy an application after a build.</li>
 <li>The build is executed first which can take 10-20 minutes</li>
@@ -43,18 +43,18 @@
 </section>
 </section>
 <section>
-<section id="slide-orgc0c990f">
-<h2 id="orgc0c990f">First Option: Run Ansible from Vagrant</h2>
-<div class="outline-text-2" id="text-orgc0c990f">
+<section id="slide-orgc9db2c9">
+<h2 id="orgc9db2c9">First Option: Run Ansible from Vagrant</h2>
+<div class="outline-text-2" id="text-orgc9db2c9">
 </div>
 </section>
-<section id="slide-orged6e956">
-<h3 id="orged6e956">Installs</h3>
-<div class="outline-text-3" id="text-orged6e956">
+<section id="slide-org2668b62">
+<h3 id="org2668b62">Installs</h3>
+<div class="outline-text-3" id="text-org2668b62">
 </div>
 </section>
-<section id="slide-orgf832094">
-<h4 id="orgf832094">Install Ansible</h4>
+<section id="slide-orgf1b9b3c">
+<h4 id="orgf1b9b3c">Install Ansible</h4>
 <ul>
 <li>Ansible Installation Guild contains the instructions to install the control machine</li>
 <li>See <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">ansible install guide</a></li>
@@ -64,8 +64,8 @@
 
 
 </section>
-<section id="slide-orgc8f5caf">
-<h4 id="orgc8f5caf">Install Vagrant</h4>
+<section id="slide-orgd5ee51e">
+<h4 id="orgd5ee51e">Install Vagrant</h4>
 <p>
 #+BEGIN<sub>QUOTE</sub>
 Vagrant is utility for managing the lifecycle of virtual machines
@@ -93,8 +93,8 @@ end
 </dl>
 
 </section>
-<section id="slide-org4d38a44">
-<h4 id="org4d38a44">Install Virtualbox</h4>
+<section id="slide-org5d8e327">
+<h4 id="org5d8e327">Install Virtualbox</h4>
 <blockquote>
 <p>
 VirtualBox is a virtualizer for x86 hardware
@@ -106,8 +106,8 @@ VirtualBox is a virtualizer for x86 hardware
 
 </ul>
 </section>
-<section id="slide-org3a554b1">
-<h3 id="org3a554b1">Setup</h3>
+<section id="slide-org086c802">
+<h3 id="org086c802">Setup</h3>
 <ul>
 <li>Create directory for the project, eg, <b><b>ansible4vagrant</b></b></li>
 <li>List the vagrant boxes</li>
@@ -134,8 +134,8 @@ vagrant init centos/7
 </pre>
 
 </section>
-<section id="slide-org8808713">
-<h3 id="org8808713">Start/Test/End</h3>
+<section id="slide-org9033785">
+<h3 id="org9033785">Vagrant Start/Test/End</h3>
 <ul>
 <li>Start/add/boot Centos vm</li>
 
@@ -165,8 +165,8 @@ vagrant ssh
 vagrant halt
 </pre>
 </section>
-<section id="slide-orgff79b70">
-<h3 id="orgff79b70">Reload/Provision</h3>
+<section id="slide-orgd5df890">
+<h3 id="orgd5df890">Vagrant Reload/Provision</h3>
 <pre  class="example">
 vagrant reload
 vagrant provision

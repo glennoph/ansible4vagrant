@@ -61,7 +61,7 @@ vagrant box add centos/7
 vagrant init centos/7
 #+END_SRC
 
-** Start/Test/End
+** Vagrant Start/Test/End
   - Start/add/boot Centos vm  
 #+BEGIN_SRC 
 vagrant up
@@ -78,7 +78,7 @@ vagrant ssh
 #+BEGIN_SRC 
 vagrant halt
 #+END_SRC
-** Reload/Provision
+** Vagrant Reload/Provision
 #+BEGIN_SRC 
 vagrant reload
 vagrant provision
