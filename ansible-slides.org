@@ -11,19 +11,18 @@
   - The build is executed first which can take 10-20 minutes
   - Changes in the ansible code are slowed due to the build timing.
   - Need a way to quickly run the ansible code in order to test changes.
-* First Option: Run Ansible from Vagrant
+* First Option: Ansible from Vagrant
+Vagrant supports provision of VM via ansible
 ** Installs
 *** Install Ansible
   - Ansible Installation Guild contains the instructions to install the control machine
   - See [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][ansible install guide]]
   - Check version :: ~ansible --version~
 
-
 *** Install Vagrant
-
 #+BEGIN_QUOTE
 Vagrant is utility for managing the lifecycle of virtual machines
-#+END_QUOTE=
+#+END_QUOTE
 
   - To install vagrant, see [[https://www.vagrantup.com/docs/installation/][vagrant installation]]
   - Vagrant allows you to start virtual machines.
@@ -79,8 +78,12 @@ vagrant ssh
 vagrant halt
 #+END_SRC
 ** Vagrant Reload/Provision
+- how to shutdown, startup VM
 #+BEGIN_SRC 
 vagrant reload
+#+END_SRC
+- how to execute the ansible script
+#+BEGIN_SRC 
 vagrant provision
 #+END_SRC
 

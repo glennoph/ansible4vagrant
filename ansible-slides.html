@@ -7,18 +7,18 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="file:////opt/reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
 
-<link rel="stylesheet" href="file:////opt/reveal.js/css/theme/sky.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/sky.css" id="theme"/>
 
-<link rel="stylesheet" href="file:////opt/reveal.js/lib/css/zenburn.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/css/zenburn.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:////opt/reveal.js/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -27,12 +27,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-03 Sun 16:26</p>
+<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-10 Sun 12:19</p>
 </section>
 
 <section>
-<section id="slide-orgcbb20b5">
-<h2 id="orgcbb20b5">Motivation</h2>
+<section id="slide-org79dde91">
+<h2 id="org79dde91">Motivation</h2>
 <ul>
 <li>Ansible use case is to deploy an application after a build.</li>
 <li>The build is executed first which can take 10-20 minutes</li>
@@ -43,18 +43,19 @@
 </section>
 </section>
 <section>
-<section id="slide-orgc9db2c9">
-<h2 id="orgc9db2c9">First Option: Run Ansible from Vagrant</h2>
-<div class="outline-text-2" id="text-orgc9db2c9">
+<section id="slide-orgf40e952">
+<h2 id="orgf40e952">First Option: Ansible from Vagrant</h2>
+<p>
+Vagrant supports provision of VM via ansible
+</p>
+</section>
+<section id="slide-org9592708">
+<h3 id="org9592708">Installs</h3>
+<div class="outline-text-3" id="text-org9592708">
 </div>
 </section>
-<section id="slide-org2668b62">
-<h3 id="org2668b62">Installs</h3>
-<div class="outline-text-3" id="text-org2668b62">
-</div>
-</section>
-<section id="slide-orgf1b9b3c">
-<h4 id="orgf1b9b3c">Install Ansible</h4>
+<section id="slide-org3716a61">
+<h4 id="org3716a61">Install Ansible</h4>
 <ul>
 <li>Ansible Installation Guild contains the instructions to install the control machine</li>
 <li>See <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">ansible install guide</a></li>
@@ -62,15 +63,14 @@
 
 </ul>
 
-
 </section>
-<section id="slide-orgd5ee51e">
-<h4 id="orgd5ee51e">Install Vagrant</h4>
+<section id="slide-orga569248">
+<h4 id="orga569248">Install Vagrant</h4>
+<blockquote>
 <p>
-#+BEGIN<sub>QUOTE</sub>
 Vagrant is utility for managing the lifecycle of virtual machines
-#+END<sub>QUOTE</sub>=
 </p>
+</blockquote>
 
 <ul>
 <li>To install vagrant, see <a href="https://www.vagrantup.com/docs/installation/">vagrant installation</a></li>
@@ -93,8 +93,8 @@ end
 </dl>
 
 </section>
-<section id="slide-org5d8e327">
-<h4 id="org5d8e327">Install Virtualbox</h4>
+<section id="slide-org0a8f892">
+<h4 id="org0a8f892">Install Virtualbox</h4>
 <blockquote>
 <p>
 VirtualBox is a virtualizer for x86 hardware
@@ -106,8 +106,8 @@ VirtualBox is a virtualizer for x86 hardware
 
 </ul>
 </section>
-<section id="slide-org086c802">
-<h3 id="org086c802">Setup</h3>
+<section id="slide-orga4bbe49">
+<h3 id="orga4bbe49">Setup</h3>
 <ul>
 <li>Create directory for the project, eg, <b><b>ansible4vagrant</b></b></li>
 <li>List the vagrant boxes</li>
@@ -134,8 +134,8 @@ vagrant init centos/7
 </pre>
 
 </section>
-<section id="slide-org9033785">
-<h3 id="org9033785">Vagrant Start/Test/End</h3>
+<section id="slide-org57ecd8a">
+<h3 id="org57ecd8a">Vagrant Start/Test/End</h3>
 <ul>
 <li>Start/add/boot Centos vm</li>
 
@@ -165,18 +165,28 @@ vagrant ssh
 vagrant halt
 </pre>
 </section>
-<section id="slide-orgd5df890">
-<h3 id="orgd5df890">Vagrant Reload/Provision</h3>
+<section id="slide-org629e7c8">
+<h3 id="org629e7c8">Vagrant Reload/Provision</h3>
+<ul>
+<li>how to shutdown, startup VM</li>
+
+</ul>
 <pre  class="example">
 vagrant reload
+</pre>
+<ul>
+<li>how to execute the ansible script</li>
+
+</ul>
+<pre  class="example">
 vagrant provision
 </pre>
 </section>
 </section>
 </div>
 </div>
-<script src="file:////opt/reveal.js/lib/js/head.min.js"></script>
-<script src="file:////opt/reveal.js/js/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
@@ -206,7 +216,7 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'file:////opt/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+ { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
 });
 </script>
 </body>
