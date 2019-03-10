@@ -48,7 +48,7 @@
     cat /data/file2.properties
     cat /data/file3.properties
 
-- Name: grep file1 for tokens, expecting none after replace
+- name: grep file1 for tokens, expecting none after replace
   command:
     grep token /data/file1.properties
   ignore_errors: True
