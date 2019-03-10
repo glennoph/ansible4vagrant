@@ -1,8 +1,4 @@
 ---
-- name: include token dict
-  include_vars:
-    file: "{{ playbook_dir }}/token-dict.yml"
-
 
 - name: grep file1 for tokens before replace
   command:
@@ -16,23 +12,6 @@
   shell: find /data -type f -name 'file*.properties' | xargs -P 0 sed -i "{{tokens_expression}}"
   #shell: sed -i "{{tokens_expression}}" /data/file*.properties
     
-##- name: find files for replace
-##  find:
-##    paths: /data
-##    patterns: "*.properties"
-##    recurse: yes
-##  register: find_properties
-##
-##- name: replace tokens
-##  replace:
-##    path:    "{{ item.0.path }}"
-##    regexp:  "{{ item.1.regexp }}"
-##    replace: "{{ item.1.replace }}"
-##    backup: yes
-##  with_nested:
-##    - "{{ find_properties.files }}"
-##    - "{{ tokens_to_replace }}"
-
 - name: check data dir exists
   file:
     dest: "/data"
