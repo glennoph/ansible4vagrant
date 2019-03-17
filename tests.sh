@@ -1,3 +1,3 @@
 
 echo 'pytest tests.py'
-pytest tests/tests.py
+py.test tests/tests.py
