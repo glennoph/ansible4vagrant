@@ -1,4 +1,5 @@
 *~
 /.vagrant
 boxes/*
-*.retry
+/__pycache__
+*/__pycache__
