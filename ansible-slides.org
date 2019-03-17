@@ -69,6 +69,10 @@ vagrant up
 #+BEGIN_SRC 
 vagrant status
 #+END_SRC
+  - provision vm with ansible
+#+BEGIN_SRC 
+vagrant provision
+#+END_SRC
   - SSH to vm
 #+BEGIN_SRC 
 vagrant ssh
