@@ -43,6 +43,8 @@ VirtualBox is a virtualizer for x86 hardware
 #+END_QUOTE
 
 - Install package from [[https://www.virtualbox.org/wiki/Downloads][VirtualBox Downloads]]
+  - virtualbox version :: virtualbox --version
+
 ** Setup
 - Create directory for the project, eg, **ansible4vagrant**
 - List the vagrant boxes
