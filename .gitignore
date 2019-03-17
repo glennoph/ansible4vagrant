@@ -2,3 +2,4 @@
 /.vagrant
 boxes/*
 /__pycache__
+*/__pycache__
