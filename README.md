@@ -26,7 +26,7 @@ def test_passwd_file(host):
 
 * file :: tests-setup.sh
 
-```
+```bash
 echo 'save ssh config'
 vagrant ssh-config > .vagrant/ssh-config
 
@@ -41,7 +41,7 @@ py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/test_vagrant.py
 
 * file :: tests-vagrant.sh
 
-```
+```bash
 echo 'save ssh config'
 vagrant ssh-config > .vagrant/ssh-config
 
