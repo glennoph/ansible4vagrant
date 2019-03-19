@@ -8,4 +8,4 @@ vagrant ssh-config > .vagrant/ssh-config
 #pytest --ssh-config=.vagrant/ssh-config tests/tests.py
 
 echo 'run tests with hosts default'
-pytest --hosts=default --ssh-config=.vagrant/ssh-config tests/tests-vagrant.py
+py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/test_vagrant.py

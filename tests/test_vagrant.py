@@ -1,4 +1,4 @@
-#import testinfra
+# test_vagrant.py
 
 def test_datafile1(host):
     datafile1_file = host.file('/data/file1.properties')

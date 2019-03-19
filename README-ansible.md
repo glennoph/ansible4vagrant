@@ -1,54 +1,26 @@
 # ansible4vagrant
 
-Testinfra - test your infrastructure
+ansible for vagrant
 
 ## Installs
 
-* Install [Ansible](https://ansible.com)    (require 'yaml-mode)
-* Install [Testinfra](https://testinfra.readthedocs.io/)
-  - Install :: `pip install testinfra`
-  - current version 2.0.0
-  - Check version :: `testinfra --version`
+* Install Ansible from https://ansible.com    (require 'yaml-mode)
+   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  - current version 2.7
+  - tested vesion 2.6.4
+  - installed from ansible.com
+  - check version : `ansible --version`
+* Install Vagrant from https://www.vagrantup.com/ or from repo 
+  - current version 2.2.2
+  - repo version 2.0.2 (ubuntu)
+  - Check version : `vagrant --version`
+* Install Virtualbox from https://www.virtualbox.org/wiki/Downloads 
+  - current version 6.0
+  - repo version 5.2 (ubuntu)
+  - tested version 5.2.22 (macos)
+  - Check version with `virtualbox --version` | help | about
 
-## tests
-
-* file :: test_infra.py
-
-```python
-# test_infra.py
-def test_passwd_file(host):
-    passwd = host.file("/etc/passwd")
-    assert passwd.contains("root")
-    assert passwd.user == "root"
-```
-
-## setup
-
-```
-echo 'save ssh config'
-vagrant ssh-config > .vagrant/ssh-config
-
-echo 'run tests with hosts default'
-py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/test_vagrant.py
-```
-
-
-
-## test vagrant
-
-* file :: test_vagrant.py
-
-```python
-# test_vagrant.py
-
-def test_datafile1(host):
-    datafile1_file = host.file('/data/file1.properties')
-    assert datafile1_file.exists
-    assert datafile1_file.is_file
-    assert datafile1_file.contains('token') == False
-```
-
-
+## Setup
 
 * Create directory for the project **ansible4vagrant**
 * List the vagrant boxes
