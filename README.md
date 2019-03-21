@@ -1,64 +1,61 @@
 # ansible4vagrant
 
-Testinfra - test your infrastructure
+Molecule - test ansible roles
 
 ## Installs
 
 * Install [Ansible](https://ansible.com)    (require 'yaml-mode)
-* Install [Testinfra](https://testinfra.readthedocs.io/)
-  - Install :: `pip install testinfra`
-  - current version 2.0.0
-  - Check version :: `testinfra --version`
+* Install [Molecule](https://molecule.readthedocs.io/)
+  - Install :: `pip install molecule`
+  - current version 2.19.0
+  - Check version :: `molecule --version`
+
+## init new role
+
+* `molecule init role -r rep-role -d docker`
+  * where rep-role is the new role 
 
 ## tests
 
-* file :: test_infra.py
-
-```python
-# test_infra.py
-def test_passwd_file(host):
-    passwd = host.file("/etc/passwd")
-    assert passwd.contains("root")
-    assert passwd.user == "root"
 ```
-
-## setup
-
-* file :: tests-setup.sh
-
-```bash
-echo 'save ssh config'
-vagrant ssh-config > .vagrant/ssh-config
-
-echo 'run tests with hosts default'
-py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/test_vagrant.py
+cd rep-role
+molecule test
 ```
+## results
 
-
-
-## test vagrant
-
-
-* file :: tests-vagrant.sh
-
-```bash
-echo 'save ssh config'
-vagrant ssh-config > .vagrant/ssh-config
-
-echo 'run tests with hosts default'
-py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/tests-vagrant.py
 ```
-
-* file :: tests/test_vagrant.py
-
-```python
-# test_vagrant.py
-
-def test_datafile1(host):
-    datafile1_file = host.file('/data/file1.properties')
-    assert datafile1_file.exists
-    assert datafile1_file.is_file
-    assert datafile1_file.contains('token') == False
+--> Validating schema /home/glenn/src/ansible4vagrant-molecule/rep-role/molecule/default/molecule.yml.
+Validation completed successfully.
+--> Test matrix
+    
+└── default
+    ├── lint
+    ├── destroy
+    ├── dependency
+    ├── syntax
+    ├── create
+    ├── prepare
+    ├── converge
+    ├── idempotence
+    ├── side_effect
+    ├── verify
+    └── destroy
+    
+--> Scenario: 'default'
+--> Action: 'lint'
+--> Executing Yamllint on files found in /home/glenn/src/ansible4vagrant-molecule/rep-role/...
+    /home/glenn/src/ansible4vagrant-molecule/rep-role/tasks/main.yml
+      10:1      error    trailing spaces  (trailing-spaces)
+      15:14     warning  truthy value should be true or false  (truthy)
+      20:13     error    too many spaces after colon  (colons)
+      21:13     error    too many spaces after colon  (colons)
+      23:13     warning  truthy value should be true or false  (truthy)
+      31:11     error    too many spaces after colon  (colons)
+      37:1      error    trailing spaces  (trailing-spaces)
+      40:1      error    trailing spaces  (trailing-spaces)
+    
+An error occurred during the test sequence action: 'lint'. Cleaning up.
+--> Scenario: 'default'
+--> Action: 'destroy'
+...
 ```
-
-
