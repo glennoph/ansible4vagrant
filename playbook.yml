@@ -1,6 +1,8 @@
 ---
-- hosts: all
+- hosts: 127.0.0.1
+  connection: local
+  
   roles:
-    - replace_tokens
+    - rep-role
 
       
