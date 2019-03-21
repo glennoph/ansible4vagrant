@@ -27,12 +27,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-10 Sun 14:37</p>
+<h1 class="title">ansible 4 vagrant</h1><h2 class="author">glenn opdycke-hansen</h2><p class="date">Created: 2019-03-21 Thu 07:35</p>
 </section>
 
 <section>
-<section id="slide-orgce58531">
-<h2 id="orgce58531">Motivation</h2>
+<section id="slide-orgc59e8fb">
+<h2 id="orgc59e8fb">Motivation</h2>
 <ul>
 <li>Ansible use case is to deploy an application after a build.</li>
 <li>The build is executed first which can take 10-20 minutes</li>
@@ -43,19 +43,19 @@
 </section>
 </section>
 <section>
-<section id="slide-orga50af43">
-<h2 id="orga50af43">First Option: Ansible from Vagrant</h2>
+<section id="slide-org970b877">
+<h2 id="org970b877">First Option: Ansible from Vagrant</h2>
 <p>
 Vagrant supports provision of VM via ansible
 </p>
 </section>
-<section id="slide-org6ae5c24">
-<h3 id="org6ae5c24">Installs</h3>
-<div class="outline-text-3" id="text-org6ae5c24">
+<section id="slide-org3924a66">
+<h3 id="org3924a66">Installs</h3>
+<div class="outline-text-3" id="text-org3924a66">
 </div>
 </section>
-<section id="slide-org657f59c">
-<h4 id="org657f59c">Install Ansible</h4>
+<section id="slide-org36a5e56">
+<h4 id="org36a5e56">Install Ansible</h4>
 <ul>
 <li>Ansible Installation Guild contains the instructions to install the control machine</li>
 <li>See <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">ansible install guide</a></li>
@@ -64,8 +64,8 @@ Vagrant supports provision of VM via ansible
 </ul>
 
 </section>
-<section id="slide-org662a5ca">
-<h4 id="org662a5ca">Install Vagrant</h4>
+<section id="slide-org67dda4c">
+<h4 id="org67dda4c">Install Vagrant</h4>
 <blockquote>
 <p>
 Vagrant is utility for managing the lifecycle of virtual machines
@@ -93,8 +93,8 @@ end
 </dl>
 
 </section>
-<section id="slide-orgf29e0fc">
-<h4 id="orgf29e0fc">Install Virtualbox</h4>
+<section id="slide-org2e3cb00">
+<h4 id="org2e3cb00">Install Virtualbox</h4>
 <blockquote>
 <p>
 VirtualBox is a virtualizer for x86 hardware
@@ -111,8 +111,8 @@ VirtualBox is a virtualizer for x86 hardware
 </ul>
 
 </section>
-<section id="slide-org62da9e8">
-<h3 id="org62da9e8">Setup</h3>
+<section id="slide-org7d685a3">
+<h3 id="org7d685a3">Setup</h3>
 <ul>
 <li>Create directory for the project, eg, <b><b>ansible4vagrant</b></b></li>
 <li>List the vagrant boxes</li>
@@ -139,8 +139,8 @@ vagrant init centos/7
 </pre>
 
 </section>
-<section id="slide-orge308edc">
-<h3 id="orge308edc">Vagrant Start/Test/End</h3>
+<section id="slide-org0ad5ab3">
+<h3 id="org0ad5ab3">Vagrant Start/Test/End</h3>
 <ul>
 <li>Start/add/boot Centos vm</li>
 
@@ -156,7 +156,7 @@ vagrant up
 vagrant status
 </pre>
 <ul>
-<li>provision vm, with ansible</li>
+<li>provision vm with ansible</li>
 
 </ul>
 <pre  class="example">
@@ -177,8 +177,8 @@ vagrant ssh
 vagrant halt
 </pre>
 </section>
-<section id="slide-org35a2c50">
-<h3 id="org35a2c50">Vagrant Reload/Provision</h3>
+<section id="slide-orgb617456">
+<h3 id="orgb617456">Vagrant Reload/Provision</h3>
 <ul>
 <li>how to shutdown, startup VM</li>
 
@@ -192,6 +192,102 @@ vagrant reload
 </ul>
 <pre  class="example">
 vagrant provision
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-org81386d6">
+<h2 id="org81386d6">Adding Testinfra to Vagrant/Ansible</h2>
+<ul>
+<li>Use Vagrant Provision/execute Ansible scripts</li>
+<li>Add py.test tests that are executed by Testinfra</li>
+<li>Branch: <a href="https://github.com/glennoph/ansible4vagrant/tree/ansible-replace-tokens-role-testinfra">https://github.com/glennoph/ansible4vagrant/tree/ansible-replace-tokens-role-testinfra</a></li>
+
+</ul>
+</section>
+<section id="slide-org2c2a5c8">
+<h3 id="org2c2a5c8">Installs</h3>
+<div class="outline-text-3" id="text-org2c2a5c8">
+</div>
+</section>
+<section id="slide-org1d743d7">
+<h4 id="org1d743d7">Install Testinfra</h4>
+<dl>
+<dt>Install</dt><dd>`pip install testinfra`</dd>
+<dt>Current Version</dt><dd>2.0.0</dd>
+<dt>Check version</dt><dd>`testinfra &#x2013;version`</dd>
+
+</dl>
+</section>
+<section id="slide-orgb56b587">
+<h3 id="orgb56b587">Test Example</h3>
+<dl>
+<dt>file</dt><dd>test infra.py</dd>
+
+</dl>
+
+<pre  class="example">
+# test_infra.py
+def test_passwd_file(host):
+    passwd = host.file("/etc/passwd")
+    assert passwd.contains("root")
+    assert passwd.user == "root"
+</pre>
+
+</section>
+<section id="slide-org774dbe1">
+<h3 id="org774dbe1">test execution</h3>
+<dl>
+<dt>file</dt><dd>tests setup.sh</dd>
+
+</dl>
+
+<pre  class="example">
+echo 'save ssh config'
+vagrant ssh-config &gt; .vagrant/ssh-config
+
+echo 'run tests with hosts default'
+py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/test_vagrant.py
+</pre>
+
+</section>
+<section id="slide-org92d244c">
+<h3 id="org92d244c">Test Vagrant</h3>
+<div class="outline-text-3" id="text-org92d244c">
+</div>
+</section>
+<section id="slide-org4de66ee">
+<h4 id="org4de66ee">test setup</h4>
+<dl>
+<dt>file</dt><dd>`tests-vagrant.sh`</dd>
+
+</dl>
+
+<pre  class="example">
+echo 'save ssh config'
+vagrant ssh-config &gt; .vagrant/ssh-config
+
+echo 'run tests with hosts default'
+py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/tests-vagrant.py
+</pre>
+
+</section>
+<section id="slide-org8925298">
+<h4 id="org8925298">test</h4>
+<dl>
+<dt>file</dt><dd>`tests/test<sub>vagrant.py</sub>`</dd>
+
+</dl>
+
+<pre  class="example">
+# test_vagrant.py
+
+def test_datafile1(host):
+    datafile1_file = host.file('/data/file1.properties')
+    assert datafile1_file.exists
+    assert datafile1_file.is_file
+    assert datafile1_file.contains('token') == False
 </pre>
 </section>
 </section>

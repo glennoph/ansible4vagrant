@@ -93,3 +93,58 @@ vagrant reload
 vagrant provision
 #+END_SRC
 
+* Adding Testinfra to Vagrant/Ansible
+- Use Vagrant Provision/execute Ansible scripts
+- Add py.test tests that are executed by Testinfra
+- Branch: https://github.com/glennoph/ansible4vagrant/tree/ansible-replace-tokens-role-testinfra
+** Installs
+*** Install Testinfra
+  - Install :: `pip install testinfra`
+  - Current Version :: 2.0.0
+  - Check version :: `testinfra --version`
+** Test Example
+ - file :: test infra.py
+
+#+BEGIN_SRC 
+# test_infra.py
+def test_passwd_file(host):
+    passwd = host.file("/etc/passwd")
+    assert passwd.contains("root")
+    assert passwd.user == "root"
+#+END_SRC
+
+** test execution
+ - file :: tests setup.sh
+
+#+BEGIN_SRC
+echo 'save ssh config'
+vagrant ssh-config > .vagrant/ssh-config
+
+echo 'run tests with hosts default'
+py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/test_vagrant.py
+#+END_SRC
+
+** Test Vagrant
+*** test setup
+ - file :: `tests-vagrant.sh`
+
+#+BEGIN_SRC
+echo 'save ssh config'
+vagrant ssh-config > .vagrant/ssh-config
+
+echo 'run tests with hosts default'
+py.test --hosts=default --ssh-config=.vagrant/ssh-config tests/tests-vagrant.py
+#+END_SRC
+
+*** test
+- file :: `tests/test_vagrant.py`
+
+#+BEGIN_SRC 
+# test_vagrant.py
+
+def test_datafile1(host):
+    datafile1_file = host.file('/data/file1.properties')
+    assert datafile1_file.exists
+    assert datafile1_file.is_file
+    assert datafile1_file.contains('token') == False
+#+END_SRC
